@@ -3,7 +3,34 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Test 1 - HTML+CSS</title>
+        <link rel="stylesheet" href="./src/index.css" />
+
+        <title>Test 1 - HTML+CSS - Vasily</title>
     </head>
-    <body></body>
+    <body>
+        <header>
+            <h1 class="title">Hello World</h1>
+            <p class="subtitle">Always ready to meet with you.</p>
+        </header>
+        <main>
+            <div class="map-wrapper"></div>
+            <div class="cards" id="cards"></div>
+        </main>
+
+        <template id="card">
+            <article class="card">
+                <div class="card__header">
+                    <h3 class="card__title"></h3>
+                    <div class="card__flag"><img class="card__flag-img" src="" /></div>
+                </div>
+                <div class="card__contacts">
+                    <a class="card__phone" href=""></a>
+                    <a class="card__email" href=""></a>
+                </div>
+                <address class="card__address"></address>
+            </article>
+        </template>
+
+        <script type="module" src="./src/index.ts"></script>
+    </body>
 </html>
