@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,700&display=swap');
+
+@import './styles-card.css';
+
+:root {
+    font-family: 'DM Sans', sans-serif;
+    --color-gray: #f8f9fa;
+    --color-gray-light: #9e9e9e;
+    --color-dark-main: #0a0a0a;
+    --color-dark-secondary: #404040;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    padding: 48px 40px;
+    background-color: var(--color-gray);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+
+    .title {
+        margin-bottom: 16px;
+        color: var(--color-dark-main);
+        font-size: 28px;
+        font-weight: 700;
+        line-height: 32px;
+        letter-spacing: -0.588px;
+    }
+
+    .subtitle {
+        color: var(--color-dark-secondary);
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: -0.176px;
+    }
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .map-wrapper {
+        width: 310px;
+        height: 202px;
+        margin-bottom: 40px;
+        background: url('./assets/images/world_map.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+}
+
+@media (min-width: 768px) {
+    main {
+        .map-wrapper {
+            width: 750px;
+            height: 500px;
+            background: url('./assets/images/world_map.svg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+        }
+    }
+}
+
+@media (min-width: 1024px) {
+    main {
+        .map-wrapper {
+            width: 900px;
+            height: 600px;
+            background: url('./assets/images/world_map.svg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+        }
+    }
+}
+
+@media (min-width: 1200px) {
+    body {
+        padding: 116px 180px;
+        background-color: var(--color-gray);
+    }
+
+    header {
+        margin-bottom: 56px;
+
+        .title {
+            margin-bottom: 24px;
+            font-size: 48px;
+            font-style: normal;
+            line-height: 48px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            line-height: 24px;
+        }
+    }
+
+    main {
+        .map-wrapper {
+            width: 1080px;
+            height: 706px;
+            background: url('./assets/images/world_map.svg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+        }
+    }
+}
