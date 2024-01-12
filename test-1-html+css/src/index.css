@@ -58,6 +58,32 @@ main {
 }
 
 @media (min-width: 768px) {
+    main {
+        .map-wrapper {
+            width: 750px;
+            height: 500px;
+            background: url('./assets/images/world_map.svg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+        }
+    }
+}
+
+@media (min-width: 1024px) {
+    main {
+        .map-wrapper {
+            width: 900px;
+            height: 600px;
+            background: url('./assets/images/world_map.svg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+        }
+    }
+}
+
+@media (min-width: 1200px) {
     body {
         padding: 116px 180px;
         background-color: var(--color-gray);
@@ -83,7 +109,6 @@ main {
         .map-wrapper {
             width: 1080px;
             height: 706px;
-            margin-bottom: 40px;
             background: url('./assets/images/world_map.svg');
             background-repeat: no-repeat;
             background-position: center;

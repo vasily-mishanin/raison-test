@@ -65,7 +65,15 @@
     }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 640px) {
+    .cards {
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
+
+@media (min-width: 1200px) {
     .cards {
         display: grid;
         grid-gap: 24px;
