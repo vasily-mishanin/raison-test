@@ -4,15 +4,19 @@ import { BrowserRouter } from 'react-router-dom'
 export default function App() {
     return (
         <BrowserRouter>
-            <header className="h-20 bg-primary flex items-center p-4">
-                <h1 className="text-3xl text-black">Title</h1>
-            </header>
+            <Header />
             <main className="flex flex-col p-4 h-full">
                 <Route path="/login" component={LoginPage} />
             </main>
         </BrowserRouter>
     )
 }
+
+const Header = () => (
+    <header className="h-20 bg-primary flex items-center p-4">
+        <h1 className="text-3xl text-black">Title</h1>
+    </header>
+)
 
 function LoginPage() {
     return (
