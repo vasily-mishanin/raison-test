@@ -1,5 +1,7 @@
-# Raison Test Task  (сделал два задания)
-
+# Raison Test Task  
+Cделал два задания
+Deploy task-2 - https://incomparable-heliotrope-19a84e.netlify.app
+-----
 Спасибо что откликнулись!
 
 Чтобы выполнить тестовые задания сделайте форк этого репозитория или склонируйте и создайте новый репозиторий на github.
