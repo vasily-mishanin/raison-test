@@ -88,8 +88,10 @@ function LoginPage() {
                     disabled={!isEmailValid || !formState.agree}
                     onMouseDown={handleButtonMouseDown}
                     onMouseUp={handleButtonMouseUp}
+                    onTouchStart={handleButtonMouseDown}
+                    onTouchEnd={handleButtonMouseUp}
                 >
-                    {timer ? `Left - ${timer} ms` : 'Hold to proceed'}
+                    {timer > 0 && timer < 500 ? `Left - ${timer} ms` : 'Hold to proceed'}
                 </button>
             </Route>
             <Route path="/login/step-2" component={ConfirmPage} />
@@ -99,6 +101,7 @@ function LoginPage() {
 
 function ConfirmPage() {
     const [message, setMessage] = useState('')
+    const [isWaiting, setIsWaiting] = useState(false)
     const history = useHistory()
     const enteredEmail = sessionStorage.getItem('email')
 
@@ -119,6 +122,7 @@ function ConfirmPage() {
     const handleConfirm = async () => {
         setMessage('')
         try {
+            setIsWaiting(true)
             const response = await fetch('/api/endpoint', {
                 method: 'POST',
                 headers: {
@@ -126,6 +130,7 @@ function ConfirmPage() {
                 },
                 body: JSON.stringify({ email: enteredEmail }),
             })
+            setIsWaiting(false)
             if (response.ok) {
                 setMessage('Success!')
             } else {
@@ -147,7 +152,7 @@ function ConfirmPage() {
                 <button className="btn btn-neutral flex-grow" onClick={() => history.goBack()}>
                     Back
                 </button>
-                <button className="btn btn-primary flex-grow" onClick={handleConfirm}>
+                <button className="btn btn-primary flex-grow" onClick={handleConfirm} disabled={isWaiting}>
                     Confirm
                 </button>
             </div>
