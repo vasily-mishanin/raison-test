@@ -3,4 +3,4 @@ export type FormState = {
     email: string
 }
 
-export type PopUpElement = HTMLElement & { showModal: Function; closeModal: Function }
+export type PopUpElement = HTMLElement & { showModal: Function; closeal: Function }
