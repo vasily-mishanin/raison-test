@@ -102,14 +102,31 @@ function LoginPage() {
 function ConfirmPage() {
     const [message, setMessage] = useState('')
     const [isWaiting, setIsWaiting] = useState(false)
+    const [isPopupOpen, setIsPopupOpen] = useState(true)
     const history = useHistory()
     const enteredEmail = sessionStorage.getItem('email')
 
     useEffect(() => {
         const popupElement: PopUpElement = document.getElementById('popup')! as PopUpElement
-        const handlePopState = () => popupElement.closeModal()
+
+        // register handler on click " < "
+        const handlePopState = () => {
+            const currentState = window.history.state
+            if (currentState && currentState.popupOpen === true) {
+                window.history.replaceState(null, '')
+            }
+
+            setIsPopupOpen(false)
+            setMessage('')
+            if (!isPopupOpen) {
+                history.goBack()
+            }
+        }
+
         if (message) {
+            setIsPopupOpen(true)
             popupElement.showModal()
+            window.history.pushState({ popupOpen: true }, '')
         }
 
         window.addEventListener('popstate', handlePopState)
@@ -117,7 +134,16 @@ function ConfirmPage() {
         return () => {
             window.removeEventListener('popstate', handlePopState)
         }
-    }, [message])
+    }, [message, isPopupOpen])
+
+    const handlePopUpClose = () => {
+        const currentState = window.history.state
+        if (currentState && currentState.popupOpen === true) {
+            window.history.replaceState(null, '')
+        }
+        setMessage('')
+        setIsPopupOpen(false)
+    }
 
     const handleConfirm = async () => {
         setMessage('')
@@ -156,7 +182,7 @@ function ConfirmPage() {
                     Confirm
                 </button>
             </div>
-            <PopUp message={message} />
+            <PopUp message={message} isOpen={isPopupOpen} onClose={handlePopUpClose} />
         </>
     )
 }
@@ -207,7 +233,11 @@ function FormInput({
     )
 }
 
-function PopUp({ message }: { message: String }) {
+function PopUp({ message, isOpen, onClose }: { message: String; isOpen: boolean; onClose: () => void }) {
+    if (!isOpen) {
+        return null
+    }
+
     return (
         <dialog id="popup" className="modal">
             <div className="modal-box w-80">
@@ -215,7 +245,9 @@ function PopUp({ message }: { message: String }) {
 
                 <div className="modal-action">
                     <form method="dialog">
-                        <button className="btn">Close</button>
+                        <button className="btn" onClick={onClose}>
+                            Close
+                        </button>
                     </form>
                 </div>
             </div>
